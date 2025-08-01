@@ -77,7 +77,7 @@ section {
 /* Header */
 header {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -141,15 +141,16 @@ nav ul li a.active {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.961);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 5px;
 }
 
+
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/gereja-bg.jpg');
+    background : linear-gradient(rgba(80, 146, 240, 0.7), rgb(255, 255, 255)), url('logo_gkai.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -159,7 +160,7 @@ nav ul li a.active {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: #1a4b8c;
     margin-bottom: 2rem;
 }
 
@@ -187,7 +188,7 @@ nav ul li a.active {
 }
 
 .about-card {
-    background: white;
+    background: rgb(255, 252, 252);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -787,7 +788,7 @@ footer {
     
     .hero {
         background: none !important;
-        color: black;
+        color: rgb(214, 175, 175);
         height: auto;
     }
     
@@ -795,4 +796,91 @@ footer {
         background: none;
         border-left: 2px solid var(--primary-color);
     }
+}
+
+/* Pemutar Lagu - Custom Audio Buttons */
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.audio-controls button {
+    background: linear-gradient(135deg, var(--primary-color), #275a9f);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.audio-controls button:hover {
+    background: linear-gradient(135deg, #0d3a6e, #275a9f);
+    transform: scale(1.05);
+}
+
+.audio-controls button:active {
+    transform: scale(0.95);
+}
+
+/* Tombol Mode Gelap */
+.mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  z-index: 999;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background: var(--secondary-color);
+  color: #333;
+}
+
+/* Mode Gelap Aktif */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode .container,
+body.dark-mode section,
+body.dark-mode .renungan-container,
+body.dark-mode .schedule-container,
+body.dark-mode .location {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .section-title::after {
+  background-color: #fff;
+}
+
+body.dark-mode .nav-button,
+body.dark-mode .tab-button.active {
+  background: #333;
+  color: white;
+}
+
+body.dark-mode .tab-button:hover {
+  background: #444;
+}
+
+body.dark-mode .audio-controls button {
+  background: linear-gradient(135deg, #333, #444);
 }
