@@ -36,7 +36,7 @@ const websiteData = {
     },
     {
       judul: "Ibadah Minggu",
-      deskripsi: "Kebaktian minggu pagi",
+      deskripsi: "Kebaktian Ibadah Minggu",
       foto: "assets/logo_gkai.png"
     },
     {
@@ -461,5 +461,44 @@ const init = () => {
   }
 };
 
+// Dark Mode Toggle
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleBtn = document.getElementById('toggle-dark');
+  if (!toggleBtn) return;
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    // Simpan preferensi ke localStorage
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('dark-mode', isDark ? 'yes' : 'no');
+  });
+
+  // Cek preferensi sebelumnya
+  if (localStorage.getItem('dark-mode') === 'yes') {
+    document.body.classList.add('dark-mode');
+  }
+});
+
+
 // Start the application when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', init);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const audio = document.getElementById('audioPlayer');
+
+  // Jika autoplay gagal, tunggu klik pertama
+  function startAudioOnce() {
+    if (audio.paused) {
+      audio.play().catch(err => {
+        console.log("Autoplay dicegah browser, tunggu interaksi pengguna.");
+      });
+    }
+    // Hanya aktif sekali
+    document.removeEventListener('click', startAudioOnce);
+    document.removeEventListener('touchstart', startAudioOnce);
+  }
+
+  document.addEventListener('click', startAudioOnce);
+  document.addEventListener('touchstart', startAudioOnce);
+});
